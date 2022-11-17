@@ -1,11 +1,13 @@
 -- TODO remove truncates!!
+/*
 truncate users cascade;
 truncate tweets cascade;
 truncate quotes cascade;
 truncate tags cascade;
 truncate mentions cascade;
 truncate retweets cascade;
-truncate interactions cascade;
+truncate likes cascade;
+*/
 
 insert into users
 select distinct
@@ -87,8 +89,8 @@ where
 
 insert into retweets
 select distinct
-    retweet_gebruikersnaam,
     tweet_id::integer,
+    retweet_gebruikersnaam,
     retweet_tijdstip::timestamp
 from super_tweets
 where
@@ -96,7 +98,12 @@ where
     and retweet_gebruikersnaam is not null
     and retweet_tijdstip is not null;
 
---insert into favorites
--- TODO interactions
-
+insert into likes
+select distinct
+    tweet_id::integer,
+    favorite_gebruikersnaam
+from super_favorites
+where
+    tweet_id is not null
+    and favorite_gebruikersnaam is not null;
 
