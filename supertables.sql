@@ -28,3 +28,6 @@ create table super_favorites (
     favorite_gebruiker_beschrijving varchar,
     favorite_gebruiker_locatie varchar
 );
+
+-- \copy super_tweets from ../tweets_en_retweets.csv delimiter ',' csv header
+-- \copy super_favorites from ../favorites.csv delimiter ',' csv header
