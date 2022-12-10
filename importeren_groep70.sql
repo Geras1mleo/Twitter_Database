@@ -1,14 +1,3 @@
--- TODO remove truncates!!
-/*
-truncate users cascade;
-truncate tweets cascade;
-truncate quotes cascade;
-truncate tags cascade;
-truncate mentions cascade;
-truncate retweets cascade;
-truncate likes cascade;
-*/
-
 insert into users
 select distinct
     tweet_gebruikersnaam,
